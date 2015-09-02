@@ -1,0 +1,114 @@
+body {
+  background-color: black;
+  color: white;
+}
+
+#namePlate {
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+}
+
+#namePlate h1 {
+  font-size: 84px;
+  font-family: 'Lato', sans-serif;
+}
+
+#namePlate h4 {
+  font-size: 25px;
+  font-family: 'Lato', sans-serif;
+}
+
+#namePlate u {
+    text-decoration: none;
+    border-bottom: 2.75px solid white;
+}
+
+#namePlate p {
+  font-size: 32px;
+}
+
+#dotContainer {
+  position: relative;
+}
+
+#dotContainer img {
+  position: absolute;
+  height: 25px;
+  width: 30px;
+  top: 3px;
+  left: -5px;
+}
+
+#dot01 {
+  position: absolute;
+}
+
+#dot02 {
+  position: absolute;
+}
+
+#dot03 {
+  position: absolute;
+}
+
+#dot04 {
+  position: absolute;
+}
+
+#dots0 {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+#dot11 {
+  position: absolute;
+}
+
+#dot12 {
+  position: absolute;
+}
+
+#dot13 {
+  position: absolute;
+}
+
+#dot14 {
+  position: absolute;
+}
+
+#dots1 {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+#logosContainer {
+  text-align: center;
+  position: absolute;
+  bottom: 20px;
+}
+
+#logosContainer div {
+  width: 50px;
+  float: none;
+  display: inline-block;
+}
+
+#mail {
+  width: 35px;
+  height: auto;
+}
+
+#github {
+  width: 30px;
+  height: auto;
+}
+
+#linkedin {
+  width: 30px;
+  height: auto;
+}

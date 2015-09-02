@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Tony Situ</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/index.css">
+  <link href='http://fonts.googleapis.com/css?family=Lato:300,300italic' rel='stylesheet' type='text/css'>
+  <!-- <link rel="shortcut icon" type="image/x-icon" href="tab.ico"> --> 
+</head>
+
+<body>
+  <!-- 
+  TODO: 1) Improve color amounts
+        2) Draw better dots, come on Tony you can do better
+        3) Use divs instead of imgs
+        4) Elimate redundancy by consolidating dots 
+  -->
+  <div class="container-fluid" id="dots0">
+
+    <img id="dot01" src="assets/img/reddot.png">
+
+    <img id="dot02" src="assets/img/greendot.png">
+
+    <img id="dot03" src="assets/img/purpledot.png">
+
+    <img id="dot04" src="assets/img/yellowdot.png">
+  </div>
+
+  <div class="container-fluid" id="dots1">
+
+    <img id="dot11" src="assets/img/reddot.png">
+
+    <img id="dot12" src="assets/img/greendot.png">
+
+    <img id="dot13" src="assets/img/purpledot.png">
+
+    <img id="dot14" src="assets/img/yellowdot.png">
+  </div>
+
+
+  <div id="namePlateContainer">
+  <div class="col-xs-12 container-fluid" id="namePlate">
+    <h1><u>Tony S<span id="dotContainer">&inodot;<img src="assets/img/greendot.png"></span>tu</u></h1>
+    <span class="col-xs-12 container-fluid" id="adj">
+      <h4>Programmer. Eng&inodot;neer.</h4>
+    </span>
+  </div>
+  </div>
+
+<div class="col-xs-12 container-fluid" id="logosContainer">
+</div>
+
+<!-- TODO: Fix sizing of logos -->
+<div class="col-xs-12 container-fluid" id="logosContainer">
+  <div id="mailContainer">
+    <a href="mailto:c2.tonyc2@gmail.com"><img src="assets/img/mailLogo.png" id="mail"></a>
+  </div>
+  <div id="linkedinContainer">
+    <a href="https://www.linkedin.com/in/c2tonyc2"><img src="assets/img/linkedinLogo.png" id="linkedin"></a>
+  </div>
+  <div id="githubContainer">
+    <a href="https://github.com/c2tonyc2" target="_blank"><img src="assets/img/githubLogo.png" id="github"></a>
+  </div>
+</div>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+  <script>
+
+    function random(n) {
+        return Math.floor(Math.random() * n);
+    }
+
+    var transition_time = 500;
+    var waiting_time = 2000;
+    var originDot = $('span#dotContainer img')
+    var images0 = $('div#dots0 img');
+    var images1 = $('div#dots1 img');
+    var n = images0.length;
+    var current0 = random(n);
+    var current1 = random(n)
+    var offset1 = 200;
+
+    function getRandom(min, max, suffix) {
+        var percent = String(Math.floor(Math.random() * (max - min + 1)) + min);
+        return percent += suffix;
+    }
+    function positioner(images, current) {
+      images.eq(current).css('left', getRandom(5, 85, '%'));
+      images.eq(current).css('top', getRandom(5, 75, '%'));
+      images.eq(current).css('width', getRandom(50, 150, ''));
+      images.eq(current).css('height', 'auto');
+      images.eq(current).css('opacity', '0.8'); // TODO: Handle color mixing with opacity
+    }
+
+    images0.hide();
+    images1.hide();
+    originDot.fadeOut(transition_time * 7) // TODO: Add a delay
+
+    var interval_id = setInterval(function () {
+         images0.eq(current0).fadeOut(transition_time, function () {
+             current0 = random(n);
+             images0.eq(current0).fadeIn({
+                                        duration: transition_time,
+                                        start: positioner(images0, current0)
+                                       });
+         });
+    }, 2 * transition_time + waiting_time);
+
+    var interval_id = setInterval(function () {
+         images1.eq(current1).fadeOut(transition_time + offset1, function () {
+             current1 = random(n);
+             images1.eq(current1).fadeIn({
+                                        duration: transition_time + offset1,
+                                        start: positioner(images1, current1)
+                                       });
+         });
+    }, 2 * transition_time + waiting_time + offset1);
+    
+ </script>
+</body>
+
+</html>
