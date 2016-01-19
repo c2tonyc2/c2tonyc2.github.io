@@ -6,122 +6,138 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="assets/css/index.css">
-  <link href='http://fonts.googleapis.com/css?family=Lato:300,300italic' rel='stylesheet' type='text/css'>
-  <!-- <link rel="shortcut icon" type="image/x-icon" href="tab.ico"> --> 
+  <link rel="stylesheet" type="text/css" href="assets/css/index.css" />
+  <link rel="stylesheet" type="text/css" href="assets/css/indexnav.css" />
+  <link href='http://fonts.googleapis.com/css?family=Lato:300,300italic' rel='stylesheet' type='text/css' />
+  <link rel="shortcut icon" type="image/x-icon" href="assets/img/logo.ico">
+  <script src="assets/js/modernizr-2.6.2.min.js"></script>
 </head>
 
 <body>
-  <!-- 
-  TODO: 1) Improve color amounts
-        2) Draw better dots, come on Tony you can do better
-        3) Use divs instead of imgs
-        4) Elimate redundancy by consolidating dots 
+  <!--
+  TODO: 1) Improve colors
   -->
-  <div class="container-fluid" id="dots0">
 
-    <img id="dot01" src="assets/img/reddot.png">
+<div class="fadeDot" id="dot0"></div>
+<div class="fadeDot" id="dot1"></div>
 
-    <img id="dot02" src="assets/img/greendot.png">
-
-    <img id="dot03" src="assets/img/purpledot.png">
-
-    <img id="dot04" src="assets/img/yellowdot.png">
-  </div>
-
-  <div class="container-fluid" id="dots1">
-
-    <img id="dot11" src="assets/img/reddot.png">
-
-    <img id="dot12" src="assets/img/greendot.png">
-
-    <img id="dot13" src="assets/img/purpledot.png">
-
-    <img id="dot14" src="assets/img/yellowdot.png">
-  </div>
-
-
-  <div id="namePlateContainer">
-  <div class="col-xs-12 container-fluid" id="namePlate">
-    <h1><u>Tony S<span id="dotContainer">&inodot;<img src="assets/img/greendot.png"></span>tu</u></h1>
-    <span class="col-xs-12 container-fluid" id="adj">
-      <h4>Programmer. Eng&inodot;neer.</h4>
-    </span>
-  </div>
-  </div>
-
-<div class="col-xs-12 container-fluid" id="logosContainer">
+<div class="col-xs-12 container-fluid" id="namePlate">
+  <h1><u>Tony S<span id="dotContainer">&inodot;<div></div></span>tu</u></h1>
+  <span class="col-xs-12 container-fluid">
+    <h4>Eng&inodot;neer</h4>
+  </span>
 </div>
 
-<!-- TODO: Fix sizing of logos -->
-<div class="col-xs-12 container-fluid" id="logosContainer">
-  <div id="mailContainer">
-    <a href="mailto:c2.tonyc2@gmail.com"><img src="assets/img/mailLogo.png" id="mail"></a>
-  </div>
-  <div id="linkedinContainer">
-    <a href="https://www.linkedin.com/in/c2tonyc2"><img src="assets/img/linkedinLogo.png" id="linkedin"></a>
-  </div>
-  <div id="githubContainer">
-    <a href="https://github.com/c2tonyc2" target="_blank"><img src="assets/img/githubLogo.png" id="github"></a>
-  </div>
+
+<div class="col-xs-12 container-fluid" id="aboutDiv">
+  <img src="assets/img/me.jpg"/>
+  <span><h5><p>
+    Hi there!
+  </p><p>
+    I'm a student studying Electrical Engineering and Computer Science at UC Berkeley.
+    I have a particular soft spot for software, algorithims, and all things circular.
+  </p><p>
+    In my spare time I enjoy reading books, watching animated films,
+    sweeping mines, playing tabletop, and climbing mountain tops.
+  </p><p>
+    Thanks for dropping by!
+  </p></h5></span>
 </div>
 
+<!-- Circular Nav adapted from Sara Soueidan from Codrops -->
+<button class="cn-button" id="cn-button">
+  <!-- Elipses by Austin Condiff from The Noun Project -->
+  <img src="assets/img/noun_70912_cc.svg" id="ellipses"/>
+</button>
+<div class="cn-wrapper" id="cn-wrapper">
+  <ul>
+    <li id="aboutBtn"><a href="#"><span id="abtTxt">About</span></a></li>
+    <li><a href="assets/resume.pdf"><span>Resume</span></a></li>
+    <li><a href="mailto:c2.tonyc2@gmail.com"><span>Email</span></a></li>
+    <li><a href="https://github.com/c2tonyc2"><span>Github</span></a></li>
+    <li><a href="https://www.linkedin.com/in/c2tonyc2"><span>LinkedIn</span></a></li>
+   </ul>
+</div>
+
+<script src="assets/js/polyfills.js"></script>
+<script src="assets/js/indexnav.js"></script>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
   <script>
 
-    function random(n) {
-        return Math.floor(Math.random() * n);
-    }
-
     var transition_time = 500;
     var waiting_time = 2000;
-    var originDot = $('span#dotContainer img')
-    var images0 = $('div#dots0 img');
-    var images1 = $('div#dots1 img');
-    var n = images0.length;
-    var current0 = random(n);
-    var current1 = random(n)
     var offset1 = 200;
+    var originDot = $('#dotContainer div')
+    var dot0 = $('#dot0');
+    var dot1 = $('#dot1');
+    var navbutton = $("#cn-button")
+    var colors = ["#4b9643", "#ebdd25", "#2bbada",
+                  "#ee1c25", "#9e4e97", "#703030",
+                  "#ff9800", "#ff9800", "#01b0f0"];
+    var about = $('#aboutDiv');
+    var aboutBtn = $('#aboutBtn');
+    var namePlate = $('#namePlate');
+    var home = true;
+
+      aboutBtn.click(function() {
+      if (home) {
+        $('#abtTxt').html("Home");
+        var curr = namePlate,
+          next = about;
+      } else {
+        $('#abtTxt').html("About");
+        var curr = about,
+          next = namePlate;
+      }
+      curr.fadeOut('slow', function() {
+                   next.fadeIn('slow')});
+      home = !home;
+      navbutton.click();
+    });
 
     function getRandom(min, max, suffix) {
         var percent = String(Math.floor(Math.random() * (max - min + 1)) + min);
         return percent += suffix;
     }
-    function positioner(images, current) {
-      images.eq(current).css('left', getRandom(5, 85, '%'));
-      images.eq(current).css('top', getRandom(5, 75, '%'));
-      images.eq(current).css('width', getRandom(50, 150, ''));
-      images.eq(current).css('height', 'auto');
-      images.eq(current).css('opacity', '0.8'); // TODO: Handle color mixing with opacity
+
+    function positioner(images) {
+      images.css('background', colors[getRandom(0, colors.length, '')]);
+      images.css('left', getRandom(15, 75, '%'));
+      images.css('top', getRandom(15, 75, '%'));
+      var size = getRandom(50, 150, '');
+      images.css('width', size);
+      images.css('height', size);
+      images.css('opacity', getRandom(0.4, 0.7, '')); // TODO: Handle color mixing with opacity
     }
 
-    images0.hide();
-    images1.hide();
-    originDot.fadeOut(transition_time * 7) // TODO: Add a delay
+    dot0.hide();
+    dot1.hide();
+    navbutton.hide();
+    about.hide();
+    originDot.fadeOut(transition_time * 7); // TODO: Add a delay
+    navbutton.delay(transition_time).fadeIn(transition_time * 7);
 
-    var interval_id = setInterval(function () {
-         images0.eq(current0).fadeOut(transition_time, function () {
-             current0 = random(n);
-             images0.eq(current0).fadeIn({
-                                        duration: transition_time,
-                                        start: positioner(images0, current0)
-                                       });
-         });
+    var interval_id0 = setInterval(function () {
+      dot0.fadeOut(transition_time, function () {
+        dot0.fadeIn({
+                        duration: transition_time,
+                        start: positioner(dot0)
+                      });
+      });
     }, 2 * transition_time + waiting_time);
 
-    var interval_id = setInterval(function () {
-         images1.eq(current1).fadeOut(transition_time + offset1, function () {
-             current1 = random(n);
-             images1.eq(current1).fadeIn({
-                                        duration: transition_time + offset1,
-                                        start: positioner(images1, current1)
-                                       });
-         });
+    var interval_id1 = setInterval(function () {
+      dot1.fadeOut(transition_time + offset1, function () {
+        dot1.fadeIn({
+                        duration: transition_time + offset1,
+                        start: positioner(dot1)
+                      });
+      });
     }, 2 * transition_time + waiting_time + offset1);
-    
+
  </script>
 </body>
 
