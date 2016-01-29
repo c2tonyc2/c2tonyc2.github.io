@@ -18,8 +18,8 @@
   TODO: 1) Improve colors
   -->
 
-<div class="fadeDot" id="dot0"></div>
-<div class="fadeDot" id="dot1"></div>
+<div class="fadeDot hidden" id="dot0"></div>
+<div class="fadeDot hidden" id="dot1"></div>
 
 <div class="col-xs-12 container-fluid" id="namePlate">
   <h1><u>Tony S<span id="dotContainer">&inodot;<div></div></span>tu</u></h1>
@@ -29,7 +29,7 @@
 </div>
 
 
-<div class="col-xs-12 container-fluid" id="aboutDiv">
+<div class="col-xs-12 container-fluid hidden" id="aboutDiv">
   <img src="assets/img/me.jpg"/>
   <span><h5><p>
     Hi there!
@@ -45,7 +45,7 @@
 </div>
 
 <!-- Circular Nav adapted from Sara Soueidan from Codrops -->
-<button class="cn-button" id="cn-button">
+<button class="cn-button hidden" id="cn-button">
   <!-- Elipses by Austin Condiff from The Noun Project -->
   <img src="assets/img/noun_70912_cc.svg" id="ellipses"/>
 </button>
@@ -82,7 +82,15 @@
     var namePlate = $('#namePlate');
     var home = true;
 
-      aboutBtn.click(function() {
+    $(document).ready(function() {
+      dot0.hide();
+      dot1.hide();
+      navbutton.hide();
+      about.hide();
+      $(".hidden").removeClass("hidden");
+    });
+
+    aboutBtn.click(function() {
       if (home) {
         $('#abtTxt').html("Home");
         var curr = namePlate,
@@ -113,10 +121,6 @@
       images.css('opacity', getRandom(0.4, 0.7, '')); // TODO: Handle color mixing with opacity
     }
 
-    dot0.hide();
-    dot1.hide();
-    navbutton.hide();
-    about.hide();
     originDot.fadeOut(transition_time * 7); // TODO: Add a delay
     navbutton.delay(transition_time).fadeIn(transition_time * 7);
 
